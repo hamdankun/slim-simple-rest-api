@@ -47,4 +47,12 @@ $app->get('/books/{id}', function (Request $request, Response $response, array $
     return $jsonResponse;
 });
 
+/**
+ * Create New Book
+ */
+$app->post('/books', function (Request $request, Response $response, array $args) use ($book) {
+    $jsonResponse = $response->withJson($book->add($request->getParsedBody())->find());
+    return $jsonResponse;
+});
+
 
