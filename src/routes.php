@@ -39,4 +39,12 @@ $app->get('/books', function (Request $request, Response $response, array $args)
     return $jsonResponse;
 });
 
+/**
+ * Get Spesifik Book
+ */
+$app->get('/books/{id}', function (Request $request, Response $response, array $args) use ($book) {
+    $jsonResponse = $response->withJson($book->findOne($args['id']));
+    return $jsonResponse;
+});
+
 
