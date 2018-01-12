@@ -63,4 +63,11 @@ $app->put('/books/{id}', function (Request $request, Response $response, array $
     return $jsonResponse;
 });
 
+/**
+ * Delete Book
+ */
+$app->delete('/books/{id}', function (Request $request, Response $response, array $args) use ($book) {
+    $jsonResponse = $response->withJson($book->delete($args['id'])->find());
+    return $jsonResponse;
+});
 
