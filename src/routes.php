@@ -55,4 +55,12 @@ $app->post('/books', function (Request $request, Response $response, array $args
     return $jsonResponse;
 });
 
+/**
+ * Update Book
+ */
+$app->put('/books/{id}', function (Request $request, Response $response, array $args) use ($book) {
+    $jsonResponse = $response->withJson($book->update($args['id'], $request->getParsedBody())->find());
+    return $jsonResponse;
+});
+
 
