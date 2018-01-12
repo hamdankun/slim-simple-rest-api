@@ -31,3 +31,12 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
+/**
+ * Get All Book
+ */
+$app->get('/books', function (Request $request, Response $response, array $args) use ($book) {
+    $jsonResponse = $response->withJson($book->find());
+    return $jsonResponse;
+});
+
+
